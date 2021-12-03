@@ -1,4 +1,4 @@
-def ex_01(data):
+def ex_01(data: list[str]) -> int:
     cols = zip(*data)
     gamma_bit = ''
     epsilon_bit = ''
@@ -8,7 +8,7 @@ def ex_01(data):
     return int(gamma_bit, 2) * int(epsilon_bit, 2)
 
 
-def get_rating(solutions, condition, i):
+def get_rating(solutions: list[str], condition: callable, i: int) -> int:
     return int(solutions[0], 2) if len(solutions) == 1 else get_rating(
         [sol for sol in solutions if sol[i] == condition(list(zip(*solutions))[i])],
         condition,
@@ -16,7 +16,7 @@ def get_rating(solutions, condition, i):
     )
 
 
-def ex_02(data):
+def ex_02(data: list[str]) -> int:
     co2_rating = get_rating(
         data,
         lambda x: min(x, key=x.count) if max(x, key=x.count) != min(x, key=x.count) else '0',
