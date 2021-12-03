@@ -31,9 +31,9 @@ def ex_02(data: list[(str, int)]) -> int:
 if __name__ == '__main__':
     with open('input.txt', encoding="utf-8") as file:
         dataset = [
-            value.split(' ')
+            [(direction, int(step)) for direction, step in value.split(' ')]
             for value in file.read().split('\n')[:-1]
         ]
 
-    # print(ex_01([(direction, int(step)) for direction, step in dataset]))
-    print(ex_02([(direction, int(step)) for direction, step in dataset]))
+    # print(ex_01(dataset))
+    print(ex_02(dataset))
