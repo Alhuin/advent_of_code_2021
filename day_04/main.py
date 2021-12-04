@@ -27,13 +27,18 @@ def ex_02(drawns: list[int], grids: list[Grid]) -> int:
     )
 
 
-if __name__ == "__main__":
-    with open('input.txt', encoding="utf-8") as file:
+def main(data_path, expected_1, expected_2):
+    with open(data_path, encoding="utf-8") as file:
         dataset = [
             line.split(' ')
             for line in file.read().split('\n')[:-1] if line != ''
         ]
     drawns, grids = parse(dataset)
 
-    print(ex_01(drawns, grids))
-    # print(ex_02(drawns, grids))
+    assert ex_01(drawns, grids) == expected_1
+    assert ex_02(drawns, grids) == expected_2
+
+
+if __name__ == "__main__":
+    main('resources/example.txt', expected_1=4512, expected_2=1924)
+    main('resources/input.txt', expected_1=29440, expected_2=13884)

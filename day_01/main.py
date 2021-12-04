@@ -6,9 +6,14 @@ def ex_02(data: list[int], window: int) -> int:
     return ex_01([sum(data[i:window + i]) for i in range(len(data) - window + 1)])
 
 
-if __name__ == '__main__':
-    with open('input.txt', encoding="utf-8") as file:
+def main(data_path, expected_1, expected_2):
+    with open(data_path, encoding="utf-8") as file:
         dataset = [int(value) for value in file.read().split('\n')[:-1]]
 
-    print(ex_01(dataset))
-    print(ex_02(dataset, 3))
+    assert ex_01(dataset) == expected_1
+    assert ex_02(dataset, 3) == expected_2
+
+
+if __name__ == '__main__':
+    main('resources/example.txt', expected_1=7, expected_2=5)
+    main('resources/input.txt', expected_1=1553, expected_2=1597)

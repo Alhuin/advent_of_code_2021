@@ -1,3 +1,6 @@
+from pprint import pprint
+
+
 def ex_01(data: list[(str, int)]) -> int:
     pos_x = 0
     pos_y = 0
@@ -28,12 +31,18 @@ def ex_02(data: list[(str, int)]) -> int:
     return pos_x * pos_y
 
 
-if __name__ == '__main__':
-    with open('input.txt', encoding="utf-8") as file:
+def main(data_path, expected_1, expected_2):
+    with open(data_path, encoding="utf-8") as file:
         dataset = [
-            [(direction, int(step)) for direction, step in value.split(' ')]
-            for value in file.read().split('\n')[:-1]
+            line.split(' ')
+            for line in file.read().split('\n')[:-1]
         ]
+        dataset = [[data[0], int(data[1])] for data in dataset]
 
-    # print(ex_01(dataset))
-    print(ex_02(dataset))
+    assert ex_01(dataset) == expected_1
+    assert ex_02(dataset) == expected_2
+
+
+if __name__ == '__main__':
+    main('resources/example.txt', expected_1=150, expected_2=900)
+    main('resources/input.txt', expected_1=1507611, expected_2=1880593125)

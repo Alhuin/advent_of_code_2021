@@ -30,9 +30,14 @@ def ex_02(data: list[str]) -> int:
     return co2_rating * oxygen_rating
 
 
-if __name__ == "__main__":
-    with open('input.txt', encoding="utf-8") as file:
+def main(data_path, expected_1, expected_2):
+    with open(data_path, encoding="utf-8") as file:
         dataset = file.read().split('\n')[:-1]
 
-    # print(ex_01(dataset))
-    print(ex_02(dataset))
+    assert ex_01(dataset) == expected_1
+    assert ex_02(dataset) == expected_2
+
+
+if __name__ == "__main__":
+    main('resources/example.txt', expected_1=198, expected_2=230)
+    main('resources/input.txt', expected_1=2498354, expected_2=3277956)
