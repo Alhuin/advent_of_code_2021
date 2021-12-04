@@ -6,8 +6,9 @@ def play(drawns: list[int], grids: list[Grid], win_condition: callable) -> int:
     for drawn in drawns:
         for grid in grids:
             grid.mark(drawn)
-            if win_condition(grid, grids):
-                return grid.compute_score(drawn)
+            if not win_condition(grid, grids):
+                continue
+            return grid.compute_score(drawn)
 
 
 def ex_01(drawns: list[int], grids: list[Grid]) -> int:
@@ -34,5 +35,5 @@ if __name__ == "__main__":
         ]
     drawns, grids = parse(dataset)
 
-    # print(ex_01(drawns, grids))
-    print(ex_02(drawns, grids))
+    print(ex_01(drawns, grids))
+    # print(ex_02(drawns, grids))
