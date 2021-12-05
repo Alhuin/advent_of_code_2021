@@ -59,5 +59,5 @@ def main(data_path, expected_1, expected_2):
 
 
 if __name__ == "__main__":
-    # main('resources/example.txt', expected_1=5, expected_2=12)
-    main('resources/input.txt', expected_1=7438, expected_2=21406)  # Have a break, have a kitkat
+    main('resources/example.txt', expected_1=5, expected_2=12)
+    # main('resources/input.txt', expected_1=7438, expected_2=21406)  # Have a break, have a kitkat
