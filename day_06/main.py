@@ -10,7 +10,7 @@ def get_nb_fishes(data: list[int], days: int = 18) -> int:
     nb_fish_by_state = [0 for _ in range(9)]
     for fish_state in data:
         nb_fish_by_state[fish_state] += 1
-    for day in range(days):
+    for day in range(days):                             # thx reddit for this one
         fishes_at_0 = nb_fish_by_state.pop(0)           # get fishes at state 0 and remove the col
         nb_fish_by_state += [fishes_at_0]               # new_children == nb_previous_0, so add new_children at index 8
         nb_fish_by_state[6] += fishes_at_0              # add nb_previous_0 at index 6
